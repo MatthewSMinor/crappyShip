@@ -10,6 +10,7 @@ position = Vector2(342, -63)
 script = ExtResource("1_lymqe")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+z_index = 1
 shape = SubResource("CircleShape2D_r5see")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

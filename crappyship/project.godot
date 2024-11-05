@@ -19,8 +19,13 @@ config/icon="res://icon.svg"
 
 project/assembly_name="crappyShip"
 
+[physics]
+
+2d/default_gravity=700.0
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+environment/defaults/default_clear_color=Color(0.133333, 0.12549, 0.203922, 1)

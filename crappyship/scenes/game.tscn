@@ -44,9 +44,6 @@ z_index = -6
 scale = Vector2(0.5, 0.5)
 scroll_scale = Vector2(2, 2)
 scroll_offset = Vector2(197, 124)
-autoscroll = Vector2(100, 0)
-repeat_times = 8
-follow_viewport = false
 ignore_camera_scroll = true
 
 [node name="stars1" type="Sprite2D" parent="Parallax2D"]
@@ -60,8 +57,9 @@ scale = Vector2(2, 2)
 texture = ExtResource("4_b286m")
 
 [node name="Asteroid" parent="." instance=ExtResource("4_v13ok")]
-position = Vector2(207, -65)
+position = Vector2(208, 160)
 
 [node name="astroidTimer" type="Timer" parent="."]
-wait_time = 2.0
 autostart = true
+
+[connection signal="timeout" from="astroidTimer" to="." method="_on_astroid_timer_timeout"]
