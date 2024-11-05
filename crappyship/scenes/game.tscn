@@ -18,48 +18,57 @@ script = ExtResource("1_1so0a")
 
 [node name="Player" parent="." instance=ExtResource("1_5sqmv")]
 z_index = -1
-position = Vector2(-200, 0)
+position = Vector2(64, 160)
 rotation = 0.383972
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(20, 21)
+position = Vector2(288, 160)
 zoom = Vector2(2, 2)
 
 [node name="floor" type="StaticBody2D" parent="."]
 visible = false
+position = Vector2(272, 136)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="floor"]
 shape = SubResource("WorldBoundaryShape2D_jv00i")
 
 [node name="ceiling" type="StaticBody2D" parent="."]
 visible = false
-position = Vector2(2, -322)
+position = Vector2(280, -184)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ceiling"]
 position = Vector2(0, -1)
 shape = SubResource("WorldBoundaryShape2D_uum5l")
 
-[node name="Parallax2D" type="Parallax2D" parent="."]
-z_index = -6
-scale = Vector2(0.5, 0.5)
-scroll_scale = Vector2(2, 2)
-scroll_offset = Vector2(197, 124)
-ignore_camera_scroll = true
-
-[node name="stars1" type="Sprite2D" parent="Parallax2D"]
-position = Vector2(-362, -216)
-scale = Vector2(2, 2)
-texture = ExtResource("3_d1lh7")
-
-[node name="stars2" type="Sprite2D" parent="Parallax2D"]
-position = Vector2(-362, -216)
-scale = Vector2(2, 2)
-texture = ExtResource("4_b286m")
-
 [node name="Asteroid" parent="." instance=ExtResource("4_v13ok")]
-position = Vector2(208, 160)
+position = Vector2(600, 152)
 
 [node name="astroidTimer" type="Timer" parent="."]
+wait_time = 3.0
 autostart = true
+
+[node name="Parallax2D" type="Parallax2D" parent="."]
+z_index = -5
+repeat_size = Vector2(576, 0)
+autoscroll = Vector2(-80, 0)
+repeat_times = 2
+follow_viewport = false
+ignore_camera_scroll = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D"]
+position = Vector2(288, 160)
+texture = ExtResource("3_d1lh7")
+
+[node name="Parallax2D2" type="Parallax2D" parent="."]
+z_index = -5
+repeat_size = Vector2(576, 0)
+autoscroll = Vector2(-40, 0)
+repeat_times = 2
+follow_viewport = false
+ignore_camera_scroll = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D2"]
+position = Vector2(288, 160)
+texture = ExtResource("4_b286m")
 
 [connection signal="timeout" from="astroidTimer" to="." method="_on_astroid_timer_timeout"]
