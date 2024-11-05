@@ -8,7 +8,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	position.x -= 1
+	position.x -= 50 * delta
 	
 	
 #func _physics_process(delta):

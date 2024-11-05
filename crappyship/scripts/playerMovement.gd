@@ -6,7 +6,9 @@ const JUMP_VELOCITY = -300.0
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
+
 func _physics_process(delta):
+	position.x = -200
 	# add the gravity
 	velocity.y += gravity * delta
 	
