@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://bo3ec12kpuqiu"]
+[gd_scene load_steps=8 format=3 uid="uid://bo3ec12kpuqiu"]
 
+[ext_resource type="Script" path="res://scripts/gameController.gd" id="1_1so0a"]
 [ext_resource type="PackedScene" uid="uid://cvulnfi8q3vj7" path="res://scenes/player.tscn" id="1_5sqmv"]
-[ext_resource type="Texture2D" uid="uid://bx6xbloy16qsv" path="res://assets/background1.png" id="2_y6x86"]
-[ext_resource type="Texture2D" uid="uid://c75bp5ncd0rxn" path="res://assets/background2.png" id="3_ngo5q"]
+[ext_resource type="Texture2D" uid="uid://bg8i4ojpasmtg" path="res://assets/stars-bg1.png" id="3_d1lh7"]
+[ext_resource type="Texture2D" uid="uid://d3rff7u2khyjf" path="res://assets/stars-bg2.png" id="4_b286m"]
 [ext_resource type="PackedScene" uid="uid://bluo7qr4fja57" path="res://scenes/asteroid.tscn" id="4_v13ok"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_jv00i"]
@@ -13,6 +14,7 @@ normal = Vector2(0, 1)
 distance = 183.041
 
 [node name="Game" type="Node2D"]
+script = ExtResource("1_1so0a")
 
 [node name="Player" parent="." instance=ExtResource("1_5sqmv")]
 z_index = -1
@@ -47,13 +49,19 @@ repeat_times = 8
 follow_viewport = false
 ignore_camera_scroll = true
 
-[node name="stars" type="Sprite2D" parent="Parallax2D"]
-texture = ExtResource("2_y6x86")
+[node name="stars1" type="Sprite2D" parent="Parallax2D"]
+position = Vector2(-362, -216)
+scale = Vector2(2, 2)
+texture = ExtResource("3_d1lh7")
 
-[node name="mist" type="Sprite2D" parent="Parallax2D"]
-modulate = Color(1, 1, 1, 0.847059)
-self_modulate = Color(1, 1, 1, 0.427451)
-texture = ExtResource("3_ngo5q")
+[node name="stars2" type="Sprite2D" parent="Parallax2D"]
+position = Vector2(-362, -216)
+scale = Vector2(2, 2)
+texture = ExtResource("4_b286m")
 
 [node name="Asteroid" parent="." instance=ExtResource("4_v13ok")]
 position = Vector2(207, -65)
+
+[node name="astroidTimer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
