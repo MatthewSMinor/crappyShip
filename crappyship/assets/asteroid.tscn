@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://bluo7qr4fja57"]
+
+[ext_resource type="Script" path="res://scripts/asteroidMovement.gd" id="1_lymqe"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_r5see"]
+
+[node name="Asteroid" type="CharacterBody2D"]
+position = Vector2(342, -63)
+script = ExtResource("1_lymqe")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_r5see")
