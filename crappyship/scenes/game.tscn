@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bo3ec12kpuqiu"]
+[gd_scene load_steps=8 format=3 uid="uid://bo3ec12kpuqiu"]
 
 [ext_resource type="Script" path="res://scripts/gameController.gd" id="1_1so0a"]
 [ext_resource type="PackedScene" uid="uid://cvulnfi8q3vj7" path="res://scenes/player.tscn" id="1_5sqmv"]
@@ -6,13 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://d3rff7u2khyjf" path="res://assets/stars-bg2.png" id="4_b286m"]
 [ext_resource type="PackedScene" uid="uid://bluo7qr4fja57" path="res://scenes/asteroid.tscn" id="4_v13ok"]
 [ext_resource type="PackedScene" uid="uid://vyoo4r6wu6k7" path="res://scenes/alien.tscn" id="6_bo0qj"]
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_jv00i"]
-distance = -183.0
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_uum5l"]
-normal = Vector2(0, 1)
-distance = 183.041
+[ext_resource type="Script" path="res://scripts/score_counter.gd" id="7_2jrox"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_1so0a")
@@ -25,21 +19,6 @@ rotation = 0.383972
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(288, 160)
 zoom = Vector2(2, 2)
-
-[node name="floor" type="StaticBody2D" parent="."]
-visible = false
-position = Vector2(272, 136)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="floor"]
-shape = SubResource("WorldBoundaryShape2D_jv00i")
-
-[node name="ceiling" type="StaticBody2D" parent="."]
-visible = false
-position = Vector2(280, -184)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ceiling"]
-position = Vector2(0, -1)
-shape = SubResource("WorldBoundaryShape2D_uum5l")
 
 [node name="Asteroid" parent="." instance=ExtResource("4_v13ok")]
 position = Vector2(600, 152)
@@ -77,8 +56,26 @@ position = Vector2(600, 80)
 script = null
 
 [node name="alienTimer" type="Timer" parent="."]
-wait_time = 10.0
+wait_time = 4.0
 autostart = true
+
+[node name="UserInterface" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ScoreCounter" type="Label" parent="UserInterface"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 56.0
+offset_bottom = 31.0
+theme_override_colors/font_color = Color(0, 0.87451, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0.388235, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+text = "Score:"
+script = ExtResource("7_2jrox")
 
 [connection signal="timeout" from="astroidTimer" to="." method="_on_astroid_timer_timeout"]
 [connection signal="timeout" from="alienTimer" to="." method="_on_alien_timer_timeout"]

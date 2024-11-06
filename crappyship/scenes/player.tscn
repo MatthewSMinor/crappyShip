@@ -1,9 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://cvulnfi8q3vj7"]
+[gd_scene load_steps=5 format=3 uid="uid://cvulnfi8q3vj7"]
 
 [ext_resource type="Texture2D" uid="uid://cew7b6ue2gr0c" path="res://assets/spaceship_32x32.png" id="1_qhkis"]
 [ext_resource type="Script" path="res://scripts/playerMovement.gd" id="1_wdmah"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_f0tes"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_71syo"]
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_wdmah")
@@ -14,3 +16,11 @@ texture = ExtResource("1_qhkis")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -3)
 shape = SubResource("CircleShape2D_f0tes")
+
+[node name="Area2D" type="Area2D" parent="." groups=["player"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" groups=["player"]]
+position = Vector2(0, -3)
+shape = SubResource("CircleShape2D_71syo")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

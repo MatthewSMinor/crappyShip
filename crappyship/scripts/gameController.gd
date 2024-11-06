@@ -17,5 +17,9 @@ func _on_astroid_timer_timeout() -> void:
 func _on_alien_timer_timeout() -> void:
 	alienSpawn = Alien.instantiate()
 	add_child(alienSpawn)
+	
+	# connect the alien collected signal to the score counter UI
+	alienSpawn.collected.connect($UserInterface/ScoreCounter._on_alien_collected.bind())
+	
 	print("we are spawning an alien")
 	pass # Replace with function body.
