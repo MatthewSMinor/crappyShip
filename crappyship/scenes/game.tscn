@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://bo3ec12kpuqiu"]
+[gd_scene load_steps=9 format=3 uid="uid://bo3ec12kpuqiu"]
 
 [ext_resource type="Script" path="res://scripts/gameController.gd" id="1_1so0a"]
 [ext_resource type="PackedScene" uid="uid://cvulnfi8q3vj7" path="res://scenes/player.tscn" id="1_5sqmv"]
 [ext_resource type="Texture2D" uid="uid://bg8i4ojpasmtg" path="res://assets/stars-bg1.png" id="3_d1lh7"]
 [ext_resource type="Texture2D" uid="uid://d3rff7u2khyjf" path="res://assets/stars-bg2.png" id="4_b286m"]
 [ext_resource type="PackedScene" uid="uid://bluo7qr4fja57" path="res://scenes/asteroid.tscn" id="4_v13ok"]
+[ext_resource type="PackedScene" uid="uid://vyoo4r6wu6k7" path="res://scenes/alien.tscn" id="6_bo0qj"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_jv00i"]
 distance = -183.0
@@ -44,13 +45,13 @@ shape = SubResource("WorldBoundaryShape2D_uum5l")
 position = Vector2(600, 152)
 
 [node name="astroidTimer" type="Timer" parent="."]
-wait_time = 3.0
+wait_time = 1.5
 autostart = true
 
 [node name="Parallax2D" type="Parallax2D" parent="."]
 z_index = -5
 repeat_size = Vector2(576, 0)
-autoscroll = Vector2(-80, 0)
+autoscroll = Vector2(-600, 0)
 repeat_times = 2
 follow_viewport = false
 ignore_camera_scroll = true
@@ -62,7 +63,7 @@ texture = ExtResource("3_d1lh7")
 [node name="Parallax2D2" type="Parallax2D" parent="."]
 z_index = -5
 repeat_size = Vector2(576, 0)
-autoscroll = Vector2(-40, 0)
+autoscroll = Vector2(-400, 0)
 repeat_times = 2
 follow_viewport = false
 ignore_camera_scroll = true
@@ -71,4 +72,13 @@ ignore_camera_scroll = true
 position = Vector2(288, 160)
 texture = ExtResource("4_b286m")
 
+[node name="Alien" parent="." instance=ExtResource("6_bo0qj")]
+position = Vector2(600, 80)
+script = null
+
+[node name="alienTimer" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+
 [connection signal="timeout" from="astroidTimer" to="." method="_on_astroid_timer_timeout"]
+[connection signal="timeout" from="alienTimer" to="." method="_on_alien_timer_timeout"]
