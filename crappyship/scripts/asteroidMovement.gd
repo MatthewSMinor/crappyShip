@@ -9,7 +9,6 @@ func _ready() -> void:
 	position.x = 608
 	rotation = rng.randf_range(-20, 20)
 
-
 		
 func _physics_process(delta: float) -> void:
 	position.x -= speed * delta
