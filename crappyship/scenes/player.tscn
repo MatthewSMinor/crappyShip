@@ -4,6 +4,7 @@
 [ext_resource type="Script" path="res://scripts/playerMovement.gd" id="1_wdmah"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_f0tes"]
+radius = 8.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_71syo"]
 

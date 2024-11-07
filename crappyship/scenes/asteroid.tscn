@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://gj2swoikep3v" path="res://assets/asteroid_32x32.png" id="2_hyb57"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_r5see"]
+radius = 8.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ssrab"]
 

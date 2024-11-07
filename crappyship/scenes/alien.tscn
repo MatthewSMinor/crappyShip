@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://scripts/alienMovement.gd" id="1_twdd7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7nm1k"]
-radius = 8.0
+radius = 0.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kbwtt"]
 radius = 8.0
