@@ -10,7 +10,7 @@ func _physics_process(delta):
 	velocity.y += gravity * delta
 	
 	if position.y > 325 or position.y < -5:
-		get_tree().change_scene_to_file("res://scenes/menu.tscn")
+		get_tree().change_scene_to_file("res://scenes/game_over.tscn")
 	
 	if Input.is_action_just_pressed("ui_accept"):
 		velocity.y = JUMP_VELOCITY
@@ -23,5 +23,5 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 	
 	if (area.is_in_group("astroid")):
 		print("astroid collision")
-		get_tree().change_scene_to_file("res://scenes/menu.tscn")
+		get_tree().change_scene_to_file("res://scenes/game_over.tscn")
 	pass # Replace with function body.
